@@ -2,6 +2,7 @@
     {
         "badge_id": "b1",
         "badge_name": "Chai Tea Making",
+        "badge_description": "Make a cup of chai tea",
         "badge_image": "",
         "event_link": {
             "event_specific": true, 
@@ -15,6 +16,7 @@
     {
         "badge_id": "b2",
         "badge_name": "Get 5 stars",
+        "badge_description": "Attend 5 events",
         "badge_image": "",
         "event_link": {
             "event_specific": false, 

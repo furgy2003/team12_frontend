@@ -2,6 +2,7 @@
     {
         "event_id": "e1",
         "isPublished": false,
+        "isDeleted": false,
         "created_by": "a1",
         "event_details": {
             "event_name": "Tech Innovators Conference 2024",
@@ -32,7 +33,7 @@
         "reminder": {
             "additional_message": ""
         },
-        "users_involved": {
+        "participants": {
             "clients": ["c1"],
             "volunteers": ["v1"],
             "admins": ["a1"]
