@@ -15,6 +15,12 @@
         "events_history": [{
             "event_id": "e2",
             "train_status": "done"
+        }],
+        "achievements": [{
+            "badge_id": "b1"
+           },
+           {
+            "badge_id": "b2"
         }]
     }
 ]
