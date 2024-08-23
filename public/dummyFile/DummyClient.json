@@ -1,0 +1,12 @@
+[
+    {
+        "client_id": "c1",
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "password": "mypassword",
+        "contact": "88888888",
+        "ethnicity": "Thai",
+        "gender": "Male"
+    }
+]
