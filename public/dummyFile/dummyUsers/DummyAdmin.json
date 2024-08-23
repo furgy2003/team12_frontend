@@ -13,6 +13,12 @@
         }],
         "events_history": [{
             "event_id": "e2"        
-        }]
+        }],
+        "appointment_in_charge":[
+            {"appointment": "ap1"}
+        ],
+        "appointment_history":[
+            {"appointment": "ap2"}
+        ]
     }
 ]

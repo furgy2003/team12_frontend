@@ -14,6 +14,12 @@
         "events_history": [{
             "event_id": "e2"        
         }],
-        "achievements":[]
+        "achievements":[],
+        "appointment_register":[
+            {"appointment": "ap1"}
+        ],
+        "appointment_history":[
+            {"appointment": "ap2"}
+        ]
     }
 ]
