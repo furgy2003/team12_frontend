@@ -7,6 +7,12 @@
         "password": "mypassword",
         "contact": "88888888",
         "ethnicity": "Thai",
-        "gender": "Male"
+        "gender": "Male",
+        "events_register": [{
+            "event_id": "e1"
+        }],
+        "events_history": [{
+            "event_id": "e2"        
+        }]
     }
 ]
