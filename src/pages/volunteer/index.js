@@ -5,7 +5,7 @@ export default function HomePage() {
     <div>
       <Header
         img="/images/kayaking.jpg"
-        heading="Trainings"
+        heading="Home"
         description="Review the events where you've volunteered and watch those requiring training."
       />
     </div>
