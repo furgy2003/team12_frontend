@@ -1,11 +1,5 @@
 import { Button, Paper, TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -15,50 +9,78 @@ import Link from "next/link";
 import Password from "./Password";
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
-  const handleShowPassword = () => setShowPassword((show) => !show);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState("client");
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleUser = (event) => {
+    setUserType(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Email: " + email);
+    console.log("Password: " + password);
+    console.log("User type: " + userType);
+  };
 
   return (
     <Fragment>
       <Paper elevation={4} className="md:w-4/5 lg:w-3/5 xl:w-2/5 rounded-lg">
         <div className="text-4xl mt-16 ml-12">Sign in</div>
-        <form className="flex flex-col p-10 pt-4">
+        <form className="flex flex-col p-10 pt-4" onSubmit={handleSubmit}>
           <FormControl className="m-2">
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
               required={true}
+              value={userType}
+              onChange={handleUser}
             >
               <FormControlLabel
                 value="client"
-                control={<Radio color="secondary" size="large" />}
+                control={<Radio color="secondary" size="medium" />}
                 label="Client"
                 className="mr-20"
               />
               <FormControlLabel
                 value="volunteer"
-                control={<Radio color="secondary" size="large" />}
+                control={<Radio color="secondary" size="medium" />}
                 label="Volunteer"
               />
             </RadioGroup>
           </FormControl>
           <TextField
-            id="outlined-basic fullWidth outlined-error"
+            id="email"
             label="Email"
             required={true}
             color="secondary"
             className="m-2"
+            value={email}
+            onChange={handleEmail}
           />
-          <Password placeHolder="Password" />
+          <Password
+            placeHolder="Password"
+            value={password}
+            onChange={handlePassword}
+          />
           <div className="text-secondary font-bold p-2 cursor-pointer">
             Forget Password?
           </div>
           <Button
             variant="contained"
+            type="submit"
             color="primary"
             disableElevation
             className="rounded-full m-4 font-bold mt-10 p-4"
+            onSubmit={handleSubmit}
           >
             Sign in
           </Button>
@@ -66,7 +88,7 @@ export default function Login() {
       </Paper>
       <div className="flex justify-center mt-8">
         <div>No account yet?</div>
-        <Link href="" className="text-secondary font-bold ml-4">
+        <Link href="/register" className="text-secondary font-bold ml-4">
           Regiter now
         </Link>
       </div>
