@@ -1,12 +1,14 @@
 [
     {
-        "id": "e1",
+        "createState": "Finished",
         "isPublished": false,
         "isDeleted": false,
         "created_by": "a1",
+        "last_modified_by": "a1",
         "event_details": {
             "event_name": "Tech Innovators Conference 2024",
             "image_url": "https://example.com/images/tech_innovators_conference_2024.jpg",
+            "quota": 100,
             "start_date": "2024-09-15",
             "start_time": "09:00",
             "end_date": "2024-09-15",
@@ -22,21 +24,17 @@
                 "section_heading": "Introduction to Innovation",
                 "video_link": "https://example.com/videos/intro_to_innovation.mp4",
                 "section_description": "An overview of the key concepts in technology innovation."
-                },
-                {
-                "section_heading": "The Future of AI",
-                "video_link": "https://example.com/videos/future_of_ai.mp4",
-                "section_description": "Exploring the future impact of AI in various industries."
                 }
             ]
         },
         "reminder": {
+            "default_message":"",
             "additional_message": ""
         },
         "participants": {
-            "clients": ["c1"],
-            "volunteers": ["v1"],
-            "admins": ["a1"]
+            "clients": [],
+            "volunteers": [],
+            "admins": []
         }
     }
 ]

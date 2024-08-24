@@ -19,7 +19,9 @@ export default function Sidebar() {
   };
 
   const sidebarContent = (
-    <div className="w-72 h-screen bg-white shadow-md flex flex-col justify-start">
+    <div className="w-80 h-screen bg-white shadow-md flex flex-col justify-start border-r border-gray-300">
+      {" "}
+      {/* Increased width from w-72 to w-80 */}
       <div className="p-6">
         <img
           src="/assets/ZubinFoundationLogo.png"
@@ -28,13 +30,13 @@ export default function Sidebar() {
         />
         <h2
           className="mt-4 text-center font-bold"
-          style={{ color: "#000000", fontSize: "20px" }} // Adjusted font size to 20px
+          style={{ color: "#000000", fontSize: "20px" }}
         >
           The Zubin Foundation
         </h2>
         <p
           className="text-center font-bold mt-2"
-          style={{ color: "#000000", fontSize: "20px" }} // Adjusted font size to 20px
+          style={{ color: "#000000", fontSize: "20px" }}
         >
           Welcome Michael!
         </p>
