@@ -1,5 +1,10 @@
 import "@/styles/globals.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import ClientNav from "@/components/clients/ClientNav";
+import { Inter } from "next/font/google";
+
+// Load Inter font
+const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   const theme = createTheme({
@@ -11,9 +16,9 @@ export default function App({ Component, pageProps }) {
         main: "#01A9FF",
       },
       text: {
-        main: "#585858",
+        primary: "#585858", // Use 'primary' or 'secondary' to set text colors
       },
-      red: {
+      error: {
         main: "#B23239",
       },
     },
@@ -21,7 +26,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <div className={inter.className}>
+        <ClientNav />
+        <Component {...pageProps} />
+      </div>
     </ThemeProvider>
   );
 }
