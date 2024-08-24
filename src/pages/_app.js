@@ -16,9 +16,9 @@ export default function App({ Component, pageProps }) {
         main: "#01A9FF",
       },
       text: {
-        primary: "#585858", // Use 'primary' or 'secondary' to set text colors
+        primary: "#585858",
       },
-      error: {
+      red: {
         main: "#B23239",
       },
     },
