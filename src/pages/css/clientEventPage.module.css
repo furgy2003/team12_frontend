@@ -1,0 +1,72 @@
+.background {
+  background-image: url(../images/hpi.jpg);
+  padding: 8rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  background-color: #f0f0f0;
+  padding: 2rem;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 0rem; /* Add margin-top to create space */
+}
+
+.banner {
+  background-color: #ffffff;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666666;
+}
+
+.eventCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  margin-top: 2rem;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.filterButton {
+  background-color: #cecece;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  flex-grow: 1;
+  border-radius: 20px;
+}
+
+.filterButton:hover {
+  outline: 2px solid #ff0000;
+  color: #ff0000;
+}
+
+.filterButton.active {
+  background-color: #007bff;
+  color: #ffffff;
+}
