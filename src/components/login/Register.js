@@ -1,36 +1,25 @@
 import { Button, Paper, TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
+import Password from "./Password";
 
 export default function Register() {
-  const [showPassword, setShowPassword] = useState(false);
-  const handleShowPassword = () => setShowPassword((show) => !show);
-
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const handleShowConfirmPassword = () =>
-    setShowConfirmPassword((show) => !show);
-
   return (
     <Fragment>
       <Paper elevation={4} className="md:w-4/5 lg:w-3/5 xl:w-2/5 rounded-lg">
-        <div className="text-4xl mt-16 ml-12">Sign in</div>
+        <div className="text-4xl mt-16 ml-12">Sign up</div>
         <form className="flex flex-col p-10 pt-4">
           <FormControl className="m-2">
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              required={true}
             >
               <FormControlLabel
                 value="client"
@@ -52,32 +41,23 @@ export default function Register() {
             color="secondary"
             className="m-2"
           />
-          <FormControl
-            variant="outlined"
+          <TextField
+            id="outlined-basic fullWidth outlined-error"
+            label="First Name"
             required={true}
             color="secondary"
             className="m-2"
-          >
-            <InputLabel htmlFor="outlined-adornment-password">
-              Password
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={showPassword ? "text" : "password"}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleShowPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
+          />
+          <TextField
+            id="outlined-basic fullWidth outlined-error"
+            label="Last Name"
+            required={true}
+            color="secondary"
+            className="m-2"
+          />
+          <Password placeHolder="Password" />
+          <Password placeHolder="Confirm Password" />
+
           <div className="text-secondary font-bold p-2 cursor-pointer">
             Forget Password?
           </div>
@@ -87,7 +67,7 @@ export default function Register() {
             disableElevation
             className="rounded-full m-4 font-bold mt-10 p-4"
           >
-            Sign in
+            Register
           </Button>
         </form>
       </Paper>

@@ -12,6 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 import { Fragment, useState } from "react";
 import Link from "next/link";
+import Password from "./Password";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,6 +28,7 @@ export default function Login() {
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              required={true}
             >
               <FormControlLabel
                 value="client"
@@ -48,32 +50,7 @@ export default function Login() {
             color="secondary"
             className="m-2"
           />
-          <FormControl
-            variant="outlined"
-            required={true}
-            color="secondary"
-            className="m-2"
-          >
-            <InputLabel htmlFor="outlined-adornment-password">
-              Password
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={showPassword ? "text" : "password"}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleShowPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
+          <Password placeHolder="Password" />
           <div className="text-secondary font-bold p-2 cursor-pointer">
             Forget Password?
           </div>
