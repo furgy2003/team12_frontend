@@ -27,16 +27,15 @@ export default function Navbar() {
           <a href="#" className="hover:text-red-500">
             My Calendar
           </a>
-          <a href="#" className="hover:text-red-500">
+          <a href="" className="hover:text-red-500">
             Events
           </a>
           <a href="#" className="hover:text-red-500">
-            Trainings
+            Appointments
           </a>
           <a href="#" className="hover:text-red-500">
             Contacts
           </a>
-
           <FaUserCircle className="text-black w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10" />
         </div>
 
