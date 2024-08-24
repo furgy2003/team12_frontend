@@ -1,6 +1,6 @@
 [
     {
-        "volunteer_id": "v1",
+        "id": "v1",
         "firstName": "Jenny",
         "lastName": "Doe",
         "email": "jenny.doe@example.com",
@@ -16,11 +16,19 @@
             "event_id": "e2",
             "train_status": "done"
         }],
-        "achievements": [{
-            "badge_id": "b1"
-           },
-           {
-            "badge_id": "b2"
-        }]
+        "badges": [
+            {
+                "badge_id": "b1",
+                "featured": true
+            },
+            {
+                "badge_id": "b2",
+                "featured": false
+            }
+        ],
+        "achievements": {
+            "total_events": 1,
+            "total_trains": 0
+        }
     }
 ]
