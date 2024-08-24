@@ -21,6 +21,9 @@ export default function App({ Component, pageProps }) {
       red: {
         main: "#B23239",
       },
+      gray: {
+        main: "#EFEFEF",
+      },
     },
   });
 
