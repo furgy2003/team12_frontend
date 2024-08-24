@@ -27,11 +27,11 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Email: " + email);
-    console.log("Password: " + password);
-    console.log("User type: " + userType);
     if (!email && !password && !userType) return;
-
+    const userData = {
+      email: email,
+      password: password,
+    };
     // TO DO BACKEND: AUTHENTIFICATION
 
     if (userType === "client") router.push("/client");
