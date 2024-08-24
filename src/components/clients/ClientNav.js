@@ -24,19 +24,18 @@ export default function Navbar() {
 
         {/* Combined Navigation Links and Profile Icon */}
         <div className="hidden md:flex items-center justify-end space-x-10 sm:space-x-14 lg:space-x-20 text-gray-700">
-          <a href="#" className="hover:text-red-500">
+          <a href="/client/calendar" className="hover:text-red">
             My Calendar
           </a>
-          <a href="#" className="hover:text-red-500">
+          <a href="/client/events" className="hover:text-red">
             Events
           </a>
-          <a href="#" className="hover:text-red-500">
-            Trainings
+          <a href="/client/appointments" className="hover:text-red">
+            Appointments
           </a>
-          <a href="#" className="hover:text-red-500">
+          <a href="#" className="hover:text-red">
             Contacts
           </a>
-
           <FaUserCircle className="text-black w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10" />
         </div>
 

@@ -11,7 +11,7 @@ export default function TrainHomePage() {
         heading="Trainings"
         description="Review the events where you've volunteered and watch those requiring training."
       />
-      <FilterButtons b1="All" b2="Registered" b3="Completed" b4="Filter" />
+      <FilterButtons b1="Registered" b2="All" b3="Completed" b4="Filter" />
       <Divider />
       <TrainPreview
         title="Kayaking with your fellow friends"

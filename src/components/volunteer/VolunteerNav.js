@@ -24,16 +24,16 @@ export default function Navbar() {
 
         {/* Combined Navigation Links and Profile Icon */}
         <div className="hidden md:flex items-center justify-end space-x-10 sm:space-x-14 lg:space-x-20 text-gray-700">
-          <a href="#" className="hover:text-red-500">
+          <a href="/volunteer/calendar" className="hover:text-red">
             My Calendar
           </a>
-          <a href="" className="hover:text-red-500">
+          <a href="/volunteer/events" className="hover:text-red">
             Events
           </a>
-          <a href="#" className="hover:text-red-500">
-            Appointments
+          <a href="/volunteer/train" className="hover:text-red">
+            Trainings
           </a>
-          <a href="#" className="hover:text-red-500">
+          <a href="#" className="hover:text-red">
             Contacts
           </a>
 
