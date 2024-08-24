@@ -5,9 +5,9 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const EventPreview = ({ imageSrc, title, date, time, location, description, onRegister }) => {
+const EventPreview = ({ onClick, imageSrc, title, date, time, location, description, onRegister }) => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px' }} onClick={onClick}>
       <div className={styles.card}>
         <div className={styles.imageWrapper}>
           <Image src={imageSrc} alt={title} width={400} height={400} style={{ borderRadius: '10px' }} />

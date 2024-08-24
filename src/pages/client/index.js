@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import EventPreview from '../../components/events/user/EventPreview';
 import styles from '../css/clientEventPage.module.css';
 import Header from '@/components/ui/header';
+import { EventDialog } from '@/components/events/user/EventDialog';
 
 const image1 = require('../images/1.jpg');
 const image2 = require('../images/1.png');
@@ -28,9 +29,15 @@ const events = [
 ];
 
 const HomePage = () => {
+
+  const [open, setOpen] = useState(false);
+  const [eventData, setEventData] = useState(null);
+
   return (
     
     <div>
+      <EventDialog open={open} handleClose={() => setOpen(false)} eventData={eventData}/>
+
       <Header
         img="/images/hpi.jpg"
         heading="Events"
@@ -48,6 +55,11 @@ const HomePage = () => {
       <div className={styles.eventCards}>
         {events.map((event) => (
           <EventPreview
+          onClick={() => {
+            setEventData(event);
+            setOpen(true);
+            console.log('Click event')
+          }}
             key={event.id}
             imageSrc={event.image}
             title={event.title}

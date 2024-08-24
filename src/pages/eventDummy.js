@@ -1,6 +1,7 @@
 import EventPreview from "@/components/events/user/EventPreview";
 import EventPreviewCard from "@/components/events/user/EventPreviewCard";
 import eventimage from '../../public/images/1.jpg'
+import { EventDialog } from "@/components/events/user/EventDialog";
 import { Fragment } from "react";
 
 export default function EventDummy() {
