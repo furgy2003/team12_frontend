@@ -1,6 +1,6 @@
 import Header from "@/components/ui/Header";
 
-export default function HomePage() {
+export default function TrainHomePage() {
   return (
     <div>
       <Header
