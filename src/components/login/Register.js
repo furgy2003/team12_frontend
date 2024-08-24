@@ -9,6 +9,7 @@ import Divider from "@mui/material/Divider";
 import { Fragment, use, useState } from "react";
 import Link from "next/link";
 import Password from "./Password";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -28,6 +29,7 @@ export default function Register() {
     others: false,
   });
   const [otherEthnic, setOtherEthnic] = useState("");
+  const router = useRouter();
 
   const {
     indian,
@@ -86,6 +88,11 @@ export default function Register() {
     console.log("Hongkong: " + hongkong);
     console.log("Others: " + others);
     console.log("Others: " + otherEthnic);
+
+    // TO DO BACKEND: REGISTER
+
+    if (userType === "client") router.push("/client");
+    else if (userType === "volunteer") router.push("/volunteer");
   };
 
   return (

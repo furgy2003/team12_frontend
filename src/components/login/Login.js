@@ -7,11 +7,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { Fragment, useState } from "react";
 import Link from "next/link";
 import Password from "./Password";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("client");
+  const router = useRouter();
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -28,6 +30,12 @@ export default function Login() {
     console.log("Email: " + email);
     console.log("Password: " + password);
     console.log("User type: " + userType);
+    if (!email && !password && !userType) return;
+
+    // TO DO BACKEND: AUTHENTIFICATION
+
+    if (userType === "client") router.push("/client");
+    else if (userType === "volunteer") router.push("/volunteer");
   };
 
   return (
