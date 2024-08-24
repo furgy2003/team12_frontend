@@ -27,7 +27,7 @@ export default function Navbar() {
           <a href="#" className="hover:text-red-500">
             My Calendar
           </a>
-          <a href="#" className="hover:text-red-500">
+          <a href="" className="hover:text-red-500">
             Events
           </a>
           <a href="#" className="hover:text-red-500">
