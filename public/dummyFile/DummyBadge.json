@@ -1,6 +1,6 @@
 [
     {
-        "badge_id": "b1",
+        "id": "b1",
         "badge_name": "Chai Tea Making",
         "badge_description": "Make a cup of chai tea",
         "badge_image": "",

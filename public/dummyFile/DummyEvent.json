@@ -1,6 +1,6 @@
 [
     {
-        "event_id": "e1",
+        "id": "e1",
         "isPublished": false,
         "isDeleted": false,
         "created_by": "a1",
