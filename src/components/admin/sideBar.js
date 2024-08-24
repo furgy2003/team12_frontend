@@ -1,4 +1,3 @@
-// components/Sidebar.js
 import { useState } from "react";
 import Link from "next/link";
 import {
@@ -19,9 +18,7 @@ export default function Sidebar() {
   };
 
   const sidebarContent = (
-    <div className="w-80 h-screen bg-white shadow-md flex flex-col justify-start border-r border-gray-300">
-      {" "}
-      {/* Increased width from w-72 to w-80 */}
+    <div className="w-80 min-h-screen bg-white shadow-lg flex flex-col justify-start border-r border-gray-300">
       <div className="p-6">
         <img
           src="/assets/ZubinFoundationLogo.png"
@@ -41,7 +38,7 @@ export default function Sidebar() {
           Welcome Michael!
         </p>
       </div>
-      <nav className="flex-1">
+      <nav className="flex-1 overflow-y-auto">
         <Divider
           style={{
             backgroundColor: "#585858",
@@ -108,7 +105,7 @@ export default function Sidebar() {
       </div>
 
       {/* Sidebar for desktop screens */}
-      <div className="hidden md:block">{sidebarContent}</div>
+      <div className="hidden md:block h-full">{sidebarContent}</div>
 
       {/* Drawer for mobile screens */}
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
