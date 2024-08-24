@@ -1,9 +1,16 @@
-import { FaUserCircle } from "react-icons/fa";
+import { useState } from "react";
+import { FaUserCircle, FaBars } from "react-icons/fa";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav className="bg-white shadow-md font-inter">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-2 flex items-center justify-between">
         <div className="flex items-center">
           <img
             src="/assets/ZubinFoundationLogo.png"
@@ -15,8 +22,37 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Navigation Links */}
-        <div className="hidden md:flex space-x-6 lg:space-x-10 text-gray-700">
+        {/* Combined Navigation Links and Profile Icon */}
+        <div className="hidden md:flex items-center justify-end space-x-10 sm:space-x-14 lg:space-x-20 text-gray-700">
+          <a href="#" className="hover:text-red-500">
+            My Calendar
+          </a>
+          <a href="#" className="hover:text-red-500">
+            Events
+          </a>
+          <a href="#" className="hover:text-red-500">
+            Appointments
+          </a>
+          <a href="#" className="hover:text-red-500">
+            Contacts
+          </a>
+
+          <FaUserCircle className="text-black w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10" />
+        </div>
+
+        {/* Hamburger Menu Icon for Mobile */}
+        <div className="md:hidden flex items-center">
+          <FaUserCircle className="text-black w-8 h-8 mr-2 cursor-pointer" />
+          <FaBars
+            className="text-gray-700 w-8 h-8 cursor-pointer"
+            onClick={toggleMenu}
+          />
+        </div>
+      </div>
+
+      {/* Mobile Navigation Links */}
+      {menuOpen && (
+        <div className="md:hidden flex flex-col items-center space-y-2 mt-2 text-gray-700">
           <a href="#" className="hover:text-red-500">
             My Calendar
           </a>
@@ -30,28 +66,7 @@ export default function Navbar() {
             Contacts
           </a>
         </div>
-
-        {/* User Icon */}
-        <div>
-          <FaUserCircle className="text-white w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10" />
-        </div>
-      </div>
-
-      {/* Mobile Navigation Links */}
-      <div className="md:hidden flex flex-col items-center space-y-2 mt-2 text-gray-700">
-        <a href="#" className="hover:text-red-500">
-          My Calendar
-        </a>
-        <a href="#" className="hover:text-red-500">
-          Events
-        </a>
-        <a href="#" className="hover:text-red-500">
-          Trainings
-        </a>
-        <a href="#" className="hover:text-red-500">
-          Contacts
-        </a>
-      </div>
+      )}
     </nav>
   );
 }
