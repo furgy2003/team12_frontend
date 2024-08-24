@@ -1,28 +1,27 @@
 .card {
   display: flex;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  max-width: 2000px;
   padding: 5px; /* Added padding to the card */
 }
 
 .imageWrapper {
-  flex-basis: 50%;
   padding: 10px; /* Added padding to the image wrapper */
    margin-right: 20px;
 }
 
 .content {
-  flex-basis: 50%;
+  padding: 10px;
 }
 
 .title {
   font-size: 20px;
   font-weight: bold;
-  margin-top: 8px;
-  margin-bottom: 12px;
+  margin-top: 16px;
+  margin-bottom: 18px;
 }
 
 .details {
@@ -38,6 +37,7 @@
 
 .description {
   font-size: 12px;
+  margin-bottom: 16px;
   margin-bottom: 16px;
 }
 

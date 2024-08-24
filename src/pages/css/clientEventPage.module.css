@@ -8,48 +8,23 @@
 
 .container {
   background-color: #ffffff;
-  padding: 2rem;
+  padding: -10rem;
   background-size: cover;
   position: relative;
   background-position: center;
   background-repeat: no-repeat;
   margin-top: 0rem; /* Add margin-top to create space */
-}
-
-.banner {
-  background-color: #ffffff;
-  padding: 1.5rem; /* Reduce the padding */
-  text-align: center;
-  margin-bottom: 1.5rem; /* Reduce the margin-bottom */
-  border-radius: 6px; /* Reduce the border-radius */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 800px; /* Set a maximum width for the banner */
-  margin-left: auto; /* Center the banner horizontally */
-  margin-right: auto; /* Center the banner horizontally */
-}
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  color: #666666;
-}
-
-.eventCards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 2rem;
-  margin-top: 2rem;
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin-left: auto; /* Center the container horizontally */
+  margin-right: auto; /* Center the container horizontally */
 }
 
 .filterBar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 2rem;
-  gap: 1rem;
+  margin-bottom: 2rem;
+  gap: 2rem;
 }
 
 .filterButton {
@@ -72,3 +47,4 @@
   background-color: #007bff;
   color: #ffffff;
 }
+

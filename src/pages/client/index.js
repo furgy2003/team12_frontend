@@ -1,6 +1,7 @@
 import React from 'react';
 import EventPreview from '../../components/events/user/EventPreview';
 import styles from '../css/clientEventPage.module.css';
+import Header from '@/components/ui/header';
 
 const image1 = require('../images/1.jpg');
 const image2 = require('../images/1.png');
@@ -29,15 +30,14 @@ const events = [
 const HomePage = () => {
   return (
     
+    <div>
+      <Header
+        img="/images/hpi.jpg"
+        heading="Events"
+        description="Review the events where you've volunteered and watch those requiring training."
+      />
+   
     <div className={styles.container}>
-      <div className={styles.background}></div>
-      <div className={styles.banner}>
-        <h1 className={styles.title}>Explore Our Events</h1>
-        <p className={styles.subtitle}>
-          Check out the latest events and activities organized by The Zubin Foundation.
-        </p>
-      </div>
-
       <div className={styles.filterBar}>
         <button className={styles.filterButton}>Just for You</button>
         <button className={styles.filterButton}>All</button>
@@ -60,7 +60,7 @@ const HomePage = () => {
         ))}
       </div>
 
-      
+      </div>
     </div>
   );
 };
