@@ -6,7 +6,7 @@
         "email": "john.doe@example.com",
         "password": "mypassword",
         "contact": "88888888",
-        "ethnicity": "Thai",
+        "ethnicity": ["hongkong", "philippine"],
         "gender": "Male",
         "events_register": [{
             "event_id": "e1"
