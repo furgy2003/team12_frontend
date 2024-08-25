@@ -33,7 +33,7 @@ const WelcomeAndBadges = ({ username = "Furgy" }) => {
       </p>
       <div className="badge-container">
         <Image
-          src="/images/Badges.png"
+          src="/images/Badges1.png"
           alt="My Image"
           width={600}
           height={400}
