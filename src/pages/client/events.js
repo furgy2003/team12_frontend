@@ -35,6 +35,8 @@ const EventPage = () => {
   const [open, setOpen] = useState(false);
   const [eventData, setEventData] = useState(null);
   const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const [user, setUser] = useState(null);
   console.log("User:", user);
@@ -48,21 +50,32 @@ const EventPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "/api/events/get-all"
-        );
+        const userId = '66cb157066c043cef5083cb1';
+        const response = await fetch(`/api/events/get-all?userId=${userId}`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
         setEvents(data);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, []);
+
+  const handleDialogOpen = (event) => {
+    setSelectedEvent(event);
+    setOpenDialog(true);
+  };
+
+  const handleDialogClose = () => {
+    setSelectedEvent(null);
+    setOpenDialog(false);
+  };
+
   return (
     <div>
       <EventDialog
@@ -93,25 +106,35 @@ const EventPage = () => {
         <div className={styles.eventCards}>
           {events.map((event) => (
             <EventPreview
-              onClick={() => {
-                setEventData(event);
-                setOpen(true);
-                console.log("Click event");
-              }}
-              key={event.id}
-              imageSrc={event.image}
-              title={event.title}
-              date={event.date}
-              time={event.time}
-              location={event.location}
-              description={event.description}
+            onClick={() => handleDialogOpen(event)}
+              imageSrc={event.event_details.image_url}
+              title={event.event_details.event_name}
+              date={event.event_details.start_date}
+              time={event.event_details.start_time}
+              location={event.event_details.location}
+              description={event.event_details.description}
               onRegister={() =>
-                console.log("Registered for event:", event.title)
+                console.log("Registered for event:", event.event_details.event_name)
               }
             />
           ))}
         </div>
       </div>
+      {selectedEvent && (
+        <EventDialog
+          open={openDialog}
+          handleClose={handleDialogClose}
+          eventData={{
+            image: selectedEvent.event_details.image_url,
+            id : selectedEvent._id,
+            title: selectedEvent.event_details.event_name,
+            date: selectedEvent.event_details.start_date.slice(0, 10),
+            time: `${selectedEvent.event_details.start_time} - ${selectedEvent.event_details.end_time}`,
+            location: selectedEvent.event_details.location,
+            description: selectedEvent.event_details.description,
+          }}
+        />
+      )}
       <ChatEpic />
     </div>
   );

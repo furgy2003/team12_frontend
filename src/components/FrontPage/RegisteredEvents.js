@@ -27,7 +27,7 @@ const RegisteredEvents = () => {
 
         const data = await response.json();
         setEvents(data.data);
-        console.log(data)
+        console.log(data.data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
