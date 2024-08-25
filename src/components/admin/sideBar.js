@@ -18,7 +18,7 @@ export default function Sidebar() {
   };
 
   const sidebarContent = (
-    <div className="w-80 min-h-screen bg-white shadow-lg flex flex-col justify-start border-r border-gray-300">
+    <div className="w-80 min-h-screen bg-white  flex flex-col justify-start border-r border-gray-300">
       <div className="p-6">
         <img
           src="/assets/ZubinFoundationLogo.png"
