@@ -2,9 +2,10 @@ import React from 'react';
 import Image from 'next/image'
 import styles from '../../css/EventPreviewCard.module.css';
 
-const EventPreviewCard = ({ imageUrl, date, month, title, link }) => {
+
+const EventPreviewCard = ({ imageUrl, date, month, title, link, onClick}) => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px' }} onClick={onClick}>
     <div className={styles.card}>
       <Image src={imageUrl} alt="Event" className={styles.cardImage} width={300} height={200} layout="responsive" />
       <div className={styles.cardContent}>
