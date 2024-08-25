@@ -53,6 +53,7 @@ export default function Navbar() {
           <a
             href="#"
             className="bg-red text-white font-boldcursor-pointer p-2 rounded-sm hover:bg-orange-800"
+            onClick={() => router.push("/client/emergency")}
           >
             Emergency
           </a>

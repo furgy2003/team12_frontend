@@ -33,18 +33,17 @@ export default function Login() {
       password: password,
     };
 
+    console.log(userData);
+
     try {
-      const response = await fetch(
-        "/api/users/sign-in",
-        {
-          // mode: "no-cors",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+      const response = await fetch("/api/users/sign-in", {
+        // mode: "no-cors",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
       if (response.ok) {
         const user = await response.json();
