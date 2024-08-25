@@ -28,9 +28,7 @@ export default function ManageEvents() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "/api/events/get-all"
-        );
+        const response = await fetch("/api/events/get-all");
         const data = await response.json();
         setEvents(data.slice(0, 5)); // Limiting to 5 for testing purposes
       } catch (error) {
@@ -44,7 +42,7 @@ export default function ManageEvents() {
   return (
     <AdminLayout>
       <div className="p-6">
-        <div className="flex justify-between mb-6">
+        <div className="flex justify-between mb-6 mx-6 md:mx-10 lg:mx-24 xl:mx-26">
           <h1 className="text-3xl font-bold">Manage Events</h1>
           <button
             onClick={handleClickOpen}

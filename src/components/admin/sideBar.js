@@ -18,7 +18,7 @@ export default function Sidebar() {
   };
 
   const sidebarContent = (
-    <div className="w-80 min-h-screen bg-white  flex flex-col justify-start border-r border-gray-300">
+    <div className="w-80 min-h-screen bg-white flex flex-col justify-start border-r border-gray-300">
       <div className="p-6">
         <img
           src="/assets/ZubinFoundationLogo.png"
@@ -47,12 +47,12 @@ export default function Sidebar() {
           }}
         />
         <Link
-          href="/admin/profile"
+          href="/admin/dashboard"
           className="flex items-center py-3 px-6 hover:bg-gray-200 rounded my-3"
           style={{ color: "#585858", fontSize: "1.125rem" }}
         >
           <MdPerson className="mr-4 text-2xl" />
-          Profile
+          Dashboard
         </Link>
         <Divider style={{ backgroundColor: "#585858", height: "1px" }} />
         <Link
