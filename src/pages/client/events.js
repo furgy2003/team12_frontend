@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import EventPreview from "../../components/events/user/EventPreview";
 import styles from "../css/clientEventPage.module.css";
-import Header from "@/components/ui/Header";
+
+import Header from "../../components/ui/header";
 import { EventDialog } from "@/components/events/user/EventDialog";
 import { ChatEpic } from "@/components/clients/ChatEpic";
 import { FaChevronDown } from "react-icons/fa";
@@ -35,6 +36,15 @@ const EventPage = () => {
   const [eventData, setEventData] = useState(null);
   const [events, setEvents] = useState([]);
 
+  const [user, setUser] = useState(null);
+  console.log("User:", user);
+
+  useEffect(() => {
+    // Retrieve user data from localStorage
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    setUser(storedUser);
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,7 +63,6 @@ const EventPage = () => {
     };
     fetchData();
   }, []);
-
   return (
     <div>
       <EventDialog

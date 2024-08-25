@@ -3,7 +3,6 @@ import FormControl from "@mui/material/FormControl";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
 import { Fragment, useState } from "react";
 import Link from "next/link";
 import Password from "./Password";
@@ -34,30 +33,33 @@ export default function Login() {
       password: password,
     };
 
-    // BACKEND: LOGIN
-    if (userType === "client") router.push("/client");
-    else if (userType === "volunteer") router.push("/volunteer");
-    // try {
-    //   const response = await fetch(
-    //     "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/sign-in",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(userData),
-    //     }
-    //   );
+    try {
+      const response = await fetch(
+        "https://sleepy-woodland-35400-5cdfb9a5b9a7.herokuapp.com/api/users/sign-in",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
 
-    //   if (response.ok) {
-    //     if (userType === "client") router.push("/client");
-    //     else if (userType === "volunteer") router.push("/volunteer");
-    //   } else {
-    //     console.log("Error1:", response.statusText);
-    //   }
-    // } catch (error) {
-    //   console.error("Error2:", error);
-    // }
+      if (response.ok) {
+        const user = await response.json();
+
+        // Store the user data in localStorage or any preferred storage
+        localStorage.setItem("user", JSON.stringify(user.data));
+
+        // Redirect based on user type
+        if (userType === "client") router.push("/client");
+        else if (userType === "volunteer") router.push("/volunteer");
+      } else {
+        console.log("Error:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
