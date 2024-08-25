@@ -144,10 +144,10 @@ export default function EventStep1({
       </FormControl>
 
       <FormControl fullWidth margin="normal">
-        <FormLabel>Target Audience - Separated by Commas</FormLabel>
+        <FormLabel>Target Audience - ["Male", "Female", "Families"]</FormLabel>
         <TextField
           fullWidth
-          placeholder="Example: Female, Male"
+          placeholder="Options"
           variant="outlined"
           onChange={handleChange("targetAudience")}
           value={formData.targetAudience}
@@ -155,7 +155,9 @@ export default function EventStep1({
       </FormControl>
 
       <FormControl fullWidth margin="normal">
-        <FormLabel>Event Tags - Separated by Commas</FormLabel>
+        <FormLabel>
+          Event Tags - ["Mental Health", "Emergency Relief"]
+        </FormLabel>
         <TextField
           fullWidth
           placeholder="Example: Sports, Networking"
