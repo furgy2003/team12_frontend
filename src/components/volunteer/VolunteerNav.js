@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaUserCircle, FaBars } from "react-icons/fa";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -11,13 +13,18 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md font-inter">
       <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-2 flex items-center justify-between">
-        <div className="flex items-center">
+        <div
+          className="flex items-center"
+          onClick={() => {
+            router.push("/volunteer");
+          }}
+        >
           <img
             src="/assets/ZubinFoundationLogo.png"
             alt="Zubin Logo"
             className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] object-contain"
           />
-          <span className="ml-2 sm:ml-4 text-lg sm:text-xl font-bold">
+          <span className="ml-2 sm:ml-4 text-lg sm:text-xl font-bold hover:text-red">
             The Zubin Foundation
           </span>
         </div>
