@@ -11,6 +11,40 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+        port: '',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.example.com',
+        port: '',
+        pathname: '/assets/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'api.example.com',
+        port: '8080',
+        pathname: '/thumbnails/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/image/upload/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
