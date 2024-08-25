@@ -11,7 +11,6 @@ export default function TrainPreview(props) {
     console.log(id);
     router.push(currentPath + "/" + id);
   };
-
   return (
     <div>
       <div className="flex flex-col p-20 pr-36 pl-36">
@@ -19,12 +18,13 @@ export default function TrainPreview(props) {
           <img src={img} className="object-cover w-96 h-80 rounded-lg m-4" />
           <div className="flex flex-col justify-center">
             <EventPreviewDescription
+              key={id}
               title={title}
               date={date}
               time={time}
               location={location}
             />
-            <Description>{description}</Description>
+            <Description key={id}>{description}</Description>
             <div className="flex m-4">
               <div
                 onClick={handleTrain}

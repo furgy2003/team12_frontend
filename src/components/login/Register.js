@@ -75,16 +75,18 @@ export default function Register() {
     setOtherEthnic(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const ethnicityArray = [];
+    var ethnicities = "";
 
     for (const ethnic in ethnicity) {
       if (ethnicity.hasOwnProperty(ethnic)) {
-        if (ethnic == "others" && otherEthnic !== "")
-          ethnicityArray.push(otherEthnic);
-        else if (ethnic != "others" && ethnicity[ethnic]) {
-          ethnicityArray.push(ethnic);
+        if (ethnic == "others" && otherEthnic !== "") {
+          ethnicities += otherEthnic;
+          ethnicities += " ";
+        } else if (ethnic != "others" && ethnicity[ethnic]) {
+          ethnicities += ethnic;
+          ethnicities += " ";
         }
       }
     }
@@ -96,28 +98,49 @@ export default function Register() {
       !password ||
       !contact ||
       !gender ||
-      ethnicityArray.length == 0 ||
+      ethnicities === "" ||
       password != confirmPassword
     ) {
       return;
     }
 
     const userData = {
-      userType: userType,
-      firstName: firstName,
-      lastName: lastName,
+      usertype: userType,
+      first_name: firstName,
+      last_name: lastName,
       email: email,
       password: password,
-      contact: contact,
-      ethnicity: ethnicityArray,
+      confirm_password: confirmPassword,
+      country_code: "+852",
+      contact_number: contact,
+      ethnicity: ethnicities,
       gender: gender,
     };
 
-    // TO DO BACKEND: REGISTER
-    console.log(userData);
-
+    // BACKEND: REGISTER
     if (userType === "client") router.push("/client");
     else if (userType === "volunteer") router.push("/volunteer");
+    // try {
+    //   const response = await fetch(
+    //     "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/register",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(userData),
+    //     }
+    //   );
+
+    //   if (response.ok) {
+    //     if (userType === "client") router.push("/client");
+    //     else if (userType === "volunteer") router.push("/volunteer");
+    //   } else {
+    //     console.log("Error1:", response.statusText);
+    //   }
+    // } catch (error) {
+    //   console.error("Error2:", error);
+    // }
   };
 
   return (
