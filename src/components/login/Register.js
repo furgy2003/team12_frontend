@@ -118,27 +118,29 @@ export default function Register() {
     };
 
     // BACKEND: REGISTER
-    try {
-      const response = await fetch(
-        "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+    if (userType === "client") router.push("/client");
+    else if (userType === "volunteer") router.push("/volunteer");
+    // try {
+    //   const response = await fetch(
+    //     "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/register",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(userData),
+    //     }
+    //   );
 
-      if (response.ok) {
-        if (userType === "client") router.push("/client");
-        else if (userType === "volunteer") router.push("/volunteer");
-      } else {
-        console.log("Error1:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error2:", error);
-    }
+    //   if (response.ok) {
+    //     if (userType === "client") router.push("/client");
+    //     else if (userType === "volunteer") router.push("/volunteer");
+    //   } else {
+    //     console.log("Error1:", response.statusText);
+    //   }
+    // } catch (error) {
+    //   console.error("Error2:", error);
+    // }
   };
 
   return (
