@@ -19,6 +19,19 @@ export const EventDialogUnRegister = ({ open, handleClose, eventData, onRegister
   if (eventData == null) return null;
 
  const handleRegister = async () => {
+  
+
+    toast.success('Unregistered', {
+      position: 'top-right',
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+  
   try {
     const response = await fetch('/api/events/unregister', {
       method: 'POST',

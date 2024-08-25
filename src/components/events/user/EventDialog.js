@@ -19,6 +19,17 @@ export const EventDialog = ({ open, handleClose, eventData, onRegister }) => {
   if (eventData == null) return null;
 
  const handleRegister = async () => {
+  toast.success('Registered', {
+    position: 'top-right',
+    autoClose: false,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });
+
   try {
     const response = await fetch('/api/events/register', {
       method: 'POST',
