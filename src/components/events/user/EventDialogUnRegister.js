@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 import axios from 'axios';
 
-export const EventDialog = ({ open, handleClose, eventData, onRegister }) => {
+export const EventDialogUnRegister = ({ open, handleClose, eventData, onRegister }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -20,7 +20,7 @@ export const EventDialog = ({ open, handleClose, eventData, onRegister }) => {
 
  const handleRegister = async () => {
   try {
-    const response = await fetch('/api/events/register', {
+    const response = await fetch('/api/events/unregister', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export const EventDialog = ({ open, handleClose, eventData, onRegister }) => {
             </div>
             <div>
               <button className={styles.registerButton} onClick={handleRegister}>
-                Register
+                Unregister
               </button>
             </div>
           </div>

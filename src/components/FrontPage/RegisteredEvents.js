@@ -1,10 +1,14 @@
 import React from 'react';
 import EventPreviewCard from '../events/user/EventPreviewCard';
+import {EventDialogUnRegister} from '../events/user/EventDialogUnRegister';
 import styles from '../css/RegisteredEvents.module.css';
 import { useState, useEffect } from 'react';
 
 const RegisteredEvents = () => {
   const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +35,16 @@ const RegisteredEvents = () => {
     fetchData();
   }, []);
 
+  const handleDialogOpen = (event) => {
+    setSelectedEvent(event);
+    setOpenDialog(true);
+  };
+
+  const handleDialogClose = () => {
+    setSelectedEvent(null);
+    setOpenDialog(false);
+  };
+
   const formatDate = (dateString) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const date = new Date(dateString);
@@ -43,7 +57,9 @@ const RegisteredEvents = () => {
       <div className={styles.eventPreviewContainer}>
         {events.map((event, index) => (
           <EventPreviewCard
+          onClick={() => handleDialogOpen(event)}
             key={index}
+            id = {event._id}
             date={new Date(event.event_details.start_date).getDate().toString()}
             month={formatDate(event.event_details.start_date)}
             title={event.event_details.event_name}
@@ -51,6 +67,21 @@ const RegisteredEvents = () => {
           />
         ))}
       </div>
+      {selectedEvent && (
+        <EventDialogUnRegister
+          open={openDialog}
+          handleClose={handleDialogClose}
+          eventData={{
+            image: selectedEvent.event_details.image_url,
+            id : selectedEvent._id,
+            title: selectedEvent.event_details.event_name,
+            date: selectedEvent.event_details.start_date.slice(0, 10),
+            time: `${selectedEvent.event_details.start_time} - ${selectedEvent.event_details.end_time}`,
+            location: selectedEvent.event_details.location,
+            description: selectedEvent.event_details.description,
+          }}
+        />
+      )}
     </div>
   );
 };
