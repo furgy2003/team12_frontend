@@ -39,25 +39,25 @@ const WelcomeAndBadges = ({username = 'Furgy'}) => {
 }
 
 const ProfileTabs = ({tab, setTab}) => {
-    return (
-    <div>
-        <div style={tab=='profileSection' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('profileSection')}>
-            <Person />
-            <span className='ml-3'>Profile Section</span>
-        </div>
-        <div style={tab=='pastEvents' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('pastEvents')}>
-            <History />
-            <span className='ml-3'>Past Events</span>
-        </div>
-        <div style={tab=='achievements' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('achievements')}>
-            <Star />
-            <span className='ml-3'>Achievements</span>
-        </div>
-        <div style={tab=='lockedAchievements' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('lockedAchievements')}>
-            <Lock />
-            <span className='ml-3'>Locked Achievements</span>
-        </div>
-    </div>);
+  return (
+  <div>
+      <div style={tab=='profileSection' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('profileSection')}>
+          <Person />
+          <span className='ml-3'>Profile Section</span>
+      </div>
+      <div style={tab=='pastEvents' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('pastEvents')}>
+          <History />
+          <span className='ml-3'>Past Events</span>
+      </div>
+      <div style={tab=='achievements' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('achievements')}>
+          <Star />
+          <span className='ml-3'>Achievements</span>
+      </div>
+      <div style={tab=='lockedAchievements' ? {color: '#c22c21'} : {}} className='m-16 cursor-pointer' onClick={() => setTab('lockedAchievements')}>
+          <Lock />
+          <span className='ml-3 whitespace-nowrap'>Locked Achievements</span>
+      </div>
+  </div>);
 };
 
 
