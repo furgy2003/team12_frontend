@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import EventPreview from "../../components/events/user/EventPreview";
 import styles from "../css/clientEventPage.module.css";
 
-import Header from "../../components/ui/header";
+import Header from "../../components/ui/Header";
 import { EventDialog } from "@/components/events/user/EventDialog";
 import { ChatEpic } from "@/components/clients/ChatEpic";
 import { FaChevronDown } from "react-icons/fa";
