@@ -126,8 +126,27 @@ export default function CreateEvent() {
       },
     };
 
-    console.log("Form Submitted:", jsonData);
-    // Implement submission logic here, e.g., API call to save the data
+    const handleSubmit = async () => {
+      try {
+        const response = await fetch('/api/events/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(jsonData),
+        });
+        const data = await response.json();
+        console.log('Response from server:', data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    // Example call to handleSubmit
+    handleSubmit();
+
+    // Todo: show success/fail message in frontend
+    // console.log("Form Submitted:", jsonData);
   };
 
   switch (step) {
