@@ -48,8 +48,6 @@ const UpcomingEvents = () => {
         }
         const data = await response.json();
         setEvents(data);
-        console.log(data)
-        console.log("test")
       } catch (error) {
         console.error("Error fetching data:", error);
       }

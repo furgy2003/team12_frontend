@@ -5,17 +5,7 @@ import image1 from '../../../public/images/1.jpg';
 import { useEffect, useState } from 'react';
 
 const Appointments = () => {
-  const events = [
-    {
-      title: 'Kayaking with your fellow friends',
-      date: '28 Jul',
-      time: 'All day',
-      location: 'Lake Tahoe',
-      imageUrl: image1.src,
-    }
-  ];
-
-  // const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,8 +19,6 @@ const Appointments = () => {
         }
         const data = await response.json();
         setEvents(data);
-        console.log(data)
-        console.log("test")
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,18 +26,23 @@ const Appointments = () => {
     fetchData();
   }, []);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short' });
+    return formatter.format(date);
+  };
 
   return (
     <div className={styles.upcomingEvents}>
       <h2 className={styles.title}>Choose Appointments:</h2>
       <div className={styles.eventPreviewContainer}>
-        {events.map((event, index) => (
+        {events.filter(event => event.isAppointment).map((event, index) => (
           <EventPreviewCard
             key={index}
-            date="28"
-            month="JUL"
-            title="Kayaking with your fellow friends"
-            imageUrl={event.imageUrl}
+            date={new Date(event.event_details.start_date).getDate().toString()}
+            month={formatDate(event.event_details.start_date)}
+            title={event.event_details.event_name}
+            imageUrl={event.event_details.image_url}
           />
         ))}
       </div>

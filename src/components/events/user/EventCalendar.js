@@ -5,13 +5,34 @@ import Header from '@/components/ui/Header';
 // import "../../css/customCalendar.module.css"
 const localizer = momentLocalizer(moment);
 
-const events = [
-    {
-        start: moment('2024-08-25T13:00:00').toDate(),
-        end: moment('2024-08-25T15:00:00').toDate(),
-        title: 'Kayaking event'
-    }
-]
+const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/api/users/get-events"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setEvents(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+// const events = [
+//     {
+//         start: moment('2024-08-25T13:00:00').toDate(),
+//         end: moment('2024-08-25T15:00:00').toDate(),
+//         title: 'Kayaking event'
+//     }
+// ]
 
 
 export const EventCalendar = () => {
