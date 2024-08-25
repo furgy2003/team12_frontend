@@ -28,7 +28,7 @@
 }
 
 .filterButton {
-  background-color: #cecece;
+  background-color: #f5f5f5;
   border: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -48,3 +48,12 @@
   color: #ffffff;
 }
 
+.filterButtonWithIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterButtonText {
+  margin-right: 0.5rem;
+}

@@ -3,6 +3,8 @@ import EventPreview from '../../components/events/user/EventPreview';
 import styles from '../css/clientEventPage.module.css';
 import Header from '@/components/ui/header';
 import { EventDialog } from '@/components/events/user/EventDialog';
+import { ChatEpic } from '@/components/clients/ChatEpic';
+import { FaChevronDown } from 'react-icons/fa';
 
 const image1 = require('../images/1.jpg');
 const image2 = require('../images/1.png');
@@ -49,7 +51,9 @@ const EventPage = () => {
         <button className={styles.filterButton}>Just for You</button>
         <button className={styles.filterButton}>All</button>
         <button className={styles.filterButton}>Registered</button>
-        <button className={styles.filterButton}>Filter</button>
+        <button className={`${styles.filterButton} ${styles.filterButtonWithIcon}`}>
+          <span className={styles.filterButtonText}>Filter</span> <FaChevronDown />
+        </button>
       </div>
 
       <div className={styles.eventCards}>
@@ -73,6 +77,7 @@ const EventPage = () => {
       </div>
 
       </div>
+      <ChatEpic />
     </div>
   );
 };
