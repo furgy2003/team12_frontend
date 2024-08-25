@@ -29,7 +29,7 @@ export default function ManageEvents() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/api/events/get-all"
+          "/api/events/get-all"
         );
         const data = await response.json();
         setEvents(data.slice(0, 5)); // Limiting to 5 for testing purposes

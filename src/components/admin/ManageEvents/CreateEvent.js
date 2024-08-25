@@ -131,7 +131,7 @@ export default function CreateEvent({ onClose }) {
 
     try {
       const response = await fetch(
-        "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/api/events/create",
+        "/api/events/create",
         {
           // mode: "no-cors",
           method: "POST",

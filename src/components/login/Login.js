@@ -35,7 +35,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/api/users/sign-in",
+        "/api/users/sign-in",
         {
           // mode: "no-cors",
           method: "POST",
