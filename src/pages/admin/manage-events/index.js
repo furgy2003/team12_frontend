@@ -42,8 +42,8 @@ export default function ManageEvents() {
   return (
     <AdminLayout>
       <div className="p-6">
-        <div className="flex justify-between mb-6 mx-6 md:mx-10 lg:mx-24 xl:mx-26">
-          <h1 className="text-3xl font-bold">Manage Events</h1>
+        <div className="flex justify-between mb-6 mx-6 md:mx-10 lg:mx-24 xl:mx-26 pt-24">
+          <h1 className="text-4xl font-bold">Manage Events</h1>
           <button
             onClick={handleClickOpen}
             className="bg-[#F9EF1F] text-black w-14 h-14 rounded-full flex items-center justify-center"
