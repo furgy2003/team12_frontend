@@ -1,7 +1,15 @@
 import AdminLayout from "../layout";
 import { useState } from "react";
-import { Fab, Dialog } from "@mui/material";
-import { MdAdd } from "react-icons/md";
+import {
+  Fab,
+  Dialog,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
+import { MdAdd, MdEdit, MdCancel, MdEvent } from "react-icons/md";
 import FilterButtons from "@/components/ui/FilterButtons";
 import ReminderForm from "../../../components/admin/ManageReminders/ReminderForm"; // Import your form component
 
@@ -39,6 +47,49 @@ export default function ManageReminders() {
 
       <div className="mx-5">
         <FilterButtons b1="ALL" b2="Draft" b3="Event" b4="Filter" />
+      </div>
+
+      <div className="mx-5 mt-6">
+        <Card className="flex flex-row items-center p-4">
+          <CardMedia
+            component="img"
+            image="/images/1.png"
+            alt="Kayaking Event"
+            className="w-32 h-32 object-cover"
+          />
+          <CardContent className="flex-1 ml-4">
+            <Typography variant="h6" className="font-bold">
+              Reminder for Kayaking Events
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className="flex items-center"
+            >
+              <MdEvent className="mr-2" /> Remind Date: Sat, Jul 27, 2024
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className="flex items-center"
+            >
+              <MdEvent className="mr-2" /> Event Date: Sun, Jul 28, 2024
+            </Typography>
+          </CardContent>
+          <div className="flex flex-col">
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<MdEdit />}
+              className="mb-2"
+            >
+              Edit
+            </Button>
+            <Button variant="contained" color="error" startIcon={<MdCancel />}>
+              Cancel
+            </Button>
+          </div>
+        </Card>
       </div>
     </AdminLayout>
   );
