@@ -8,6 +8,7 @@ export default function TrainPreview(props) {
   const router = useRouter();
   const handleTrain = () => {
     const currentPath = router.pathname;
+    console.log(id);
     router.push(currentPath + "/" + id);
   };
 
