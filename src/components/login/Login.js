@@ -25,18 +25,40 @@ export default function Login() {
     setUserType(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!email && !password && !userType) return;
-    const userData = {
-      email: email,
-      password: password,
-    };
-    // TO DO BACKEND: AUTHENTIFICATION
+  // BACKEND: LOGIN
+  if (userType === "client") router.push("/client");
+  else if (userType === "volunteer") router.push("/volunteer");
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   if (!email && !password && !userType) return;
+  //   const userData = {
+  //     usertype: userType,
+  //     email: email,
+  //     password: password,
+  //   };
 
-    if (userType === "client") router.push("/client");
-    else if (userType === "volunteer") router.push("/volunteer");
-  };
+  //   try {
+  //     const response = await fetch(
+  //       "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/sign-in",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(userData),
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       if (userType === "client") router.push("/client");
+  //       else if (userType === "volunteer") router.push("/volunteer");
+  //     } else {
+  //       console.log("Error1:", response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error2:", error);
+  //   }
+  // };
 
   return (
     <Fragment>
