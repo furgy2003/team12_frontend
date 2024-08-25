@@ -1,21 +1,20 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/image'
 import styles from '../../css/EventPreviewCard.module.css';
 
-const EventPreview = ({ title, date, time, location, imageUrl }) => {
+const EventPreviewCard = ({ imageUrl, date, month, title, link }) => {
   return (
-    <div style={{ padding: '20px' }}>    
-      <div className={styles.card}>
-      <Image src={imageUrl} alt={title} className={styles.cardImage} />
+    <div style={{ padding: '20px' }}>
+    <div className={styles.card}>
+      <Image src={imageUrl} alt="Event" className={styles.cardImage} width={300} height={200} layout="responsive" />
       <div className={styles.cardContent}>
         <div className={styles.cardDate}>
           <h2>{date}</h2>
-          <span>{time}</span>
+          <span>{month}</span>
         </div>
         <div className={styles.cardDetails}>
           <h3>{title}</h3>
-          <p>{location}</p>
-          <a href="#" className={styles.cardLink}>
+          <a href={link} className={styles.cardLink}>
             Click for more detail
           </a>
         </div>
@@ -25,4 +24,4 @@ const EventPreview = ({ title, date, time, location, imageUrl }) => {
   );
 };
 
-export default EventPreview;
+export default EventPreviewCard;

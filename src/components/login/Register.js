@@ -15,6 +15,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [userType, setUserType] = useState("client");
@@ -24,7 +25,7 @@ export default function Register() {
     philippine: false,
     malaysian: false,
     pakistan: false,
-    srilakarn: false,
+    srilankan: false,
     hongkong: false,
     others: false,
   });
@@ -36,7 +37,7 @@ export default function Register() {
     philippine,
     malaysian,
     pakistan,
-    srilakarn,
+    srilankan,
     hongkong,
     others,
   } = ethnicity;
@@ -48,6 +49,9 @@ export default function Register() {
   };
   const handleLastName = (event) => {
     setLastName(event.target.value);
+  };
+  const handleContact = (event) => {
+    setContact(event.target.value);
   };
   const handlePassword = (event) => {
     setPassword(event.target.value);
@@ -73,23 +77,44 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("User type: " + userType);
-    console.log("Email: " + email);
-    console.log("First name: " + firstName);
-    console.log("Last name: " + lastName);
-    console.log("Password: " + password);
-    console.log("Confirm Password: " + confirmPassword);
-    console.log("Gender: " + gender);
-    console.log("Indian: " + indian);
-    console.log("Philippine: " + philippine);
-    console.log("Malaysian: " + malaysian);
-    console.log("Pakistan: " + pakistan);
-    console.log("Srilankan: " + srilakarn);
-    console.log("Hongkong: " + hongkong);
-    console.log("Others: " + others);
-    console.log("Others: " + otherEthnic);
+    const ethnicityArray = [];
+
+    for (const ethnic in ethnicity) {
+      if (ethnicity.hasOwnProperty(ethnic)) {
+        if (ethnic == "others" && otherEthnic !== "")
+          ethnicityArray.push(otherEthnic);
+        else if (ethnic != "others" && ethnicity[ethnic]) {
+          ethnicityArray.push(ethnic);
+        }
+      }
+    }
+
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !password ||
+      !contact ||
+      !gender ||
+      ethnicityArray.length == 0 ||
+      password != confirmPassword
+    ) {
+      return;
+    }
+
+    const userData = {
+      userType: userType,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      contact: contact,
+      ethnicity: ethnicityArray,
+      gender: gender,
+    };
 
     // TO DO BACKEND: REGISTER
+    console.log(userData);
 
     if (userType === "client") router.push("/client");
     else if (userType === "volunteer") router.push("/volunteer");
@@ -149,6 +174,15 @@ export default function Register() {
             value={lastName}
             onChange={handleLastName}
           />
+          <TextField
+            id="contact"
+            label="Contact Number"
+            required={true}
+            color="secondary"
+            className="m-2"
+            value={contact}
+            onChange={handleContact}
+          />
           <Password
             placeHolder="Password"
             value={password}
@@ -167,7 +201,7 @@ export default function Register() {
               color="text"
               className="text-xl"
             >
-              Ethnicity
+              Ethnicity *
             </FormLabel>
             <div className="flex justify-between text-text">
               <FormGroup>
@@ -191,7 +225,7 @@ export default function Register() {
                       onChange={handleEthnicity}
                     />
                   }
-                  label="Pakistan"
+                  label="Pakistani"
                 />
               </FormGroup>
               <FormGroup>
@@ -204,18 +238,18 @@ export default function Register() {
                       onChange={handleEthnicity}
                     />
                   }
-                  label="Philippine"
+                  label="Filipino"
                 />
                 <FormControlLabel
                   control={
                     <Checkbox
                       color="secondary"
-                      checked={srilakarn}
-                      name="srilakarn"
+                      checked={srilankan}
+                      name="srilankan"
                       onChange={handleEthnicity}
                     />
                   }
-                  label="Sri Lakarn"
+                  label="Sri Lankan"
                 />
               </FormGroup>
               <FormGroup>
@@ -270,7 +304,7 @@ export default function Register() {
               color="text"
               className="text-xl"
             >
-              Gender
+              Gender *
             </FormLabel>
             <RadioGroup
               row

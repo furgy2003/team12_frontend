@@ -27,11 +27,11 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Email: " + email);
-    console.log("Password: " + password);
-    console.log("User type: " + userType);
     if (!email && !password && !userType) return;
-
+    const userData = {
+      email: email,
+      password: password,
+    };
     // TO DO BACKEND: AUTHENTIFICATION
 
     if (userType === "client") router.push("/client");
@@ -97,7 +97,7 @@ export default function Login() {
       <div className="flex justify-center mt-8">
         <div>No account yet?</div>
         <Link href="/register" className="text-secondary font-bold ml-4">
-          Regiter now
+          Register now
         </Link>
       </div>
     </Fragment>
