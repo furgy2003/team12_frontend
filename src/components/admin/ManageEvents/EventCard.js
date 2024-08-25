@@ -7,8 +7,32 @@ import {
   MdPerson,
   MdUpdate,
 } from "react-icons/md";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EventCard({ event }) {
+  const handleRemind = async () => {
+    try {
+      const response = await fetch("/api/events/send-reminder", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ event_id: event._id }),
+      });
+
+      if (response.ok) {
+        toast.success("Reminder sent successfully!");
+      } else {
+        console.error("Failed to send reminder:", response.statusText);
+        toast.error("Failed to send reminder.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred. Please try again.");
+    }
+  };
+
   return (
     <Card
       variant="outlined"
@@ -47,13 +71,16 @@ export default function EventCard({ event }) {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <button className="bg-[#F9EF1F] text-black px-4 py-2 rounded">
+        <button
+          className="bg-[#F9EF1F] text-black px-4 py-2 rounded transform transition-transform duration-200 ease-in-out hover:scale-105"
+          onClick={handleRemind}
+        >
           Remind
         </button>
-        <button className="bg-[#01A9FF] text-white px-4 py-2 rounded">
+        <button className="bg-[#01A9FF] text-white px-4 py-2 rounded transform transition-transform duration-200 ease-in-out hover:scale-105">
           Edit
         </button>
-        <button className="bg-[#B23239] text-white px-4 py-2 rounded">
+        <button className="bg-[#B23239] text-white px-4 py-2 rounded transform transition-transform duration-200 ease-in-out hover:scale-105">
           Delete
         </button>
       </div>

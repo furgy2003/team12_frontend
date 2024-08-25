@@ -10,7 +10,7 @@ const EventPreview = ({ onClick, imageSrc, title, date, time, location, descript
     <div style={{ padding: '20px' }} onClick={onClick}>
       <div className={styles.card}>
         <div className={styles.imageWrapper}>
-          <Image src={imageSrc} alt={title} width={400} height={400} style={{ borderRadius: '10px' }} />
+        <Image src={imageSrc} alt={title} width={300} height={300} style={{ borderRadius: '10px' }} />
         </div>
         <div className={styles.content}>
           <h2 className={styles.title}>{title}</h2>
