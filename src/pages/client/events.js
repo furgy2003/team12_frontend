@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EventPreview from "../../components/events/user/EventPreview";
 import styles from "../css/clientEventPage.module.css";
 import Header from "@/components/ui/Header";
@@ -6,8 +6,8 @@ import { EventDialog } from "@/components/events/user/EventDialog";
 import { ChatEpic } from "@/components/clients/ChatEpic";
 import { FaChevronDown } from "react-icons/fa";
 
-const image1 = require("../images/1.jpg");
-const image2 = require("../images/1.png");
+// const image1 = require("../images/1.jpg");
+// const image2 = require("../images/1.png");
 
 // const events = [
 //   {
@@ -34,7 +34,7 @@ const EventPage = () => {
   const [open, setOpen] = useState(false);
   const [eventData, setEventData] = useState(null);
   const [events, setEvents] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,7 +53,6 @@ const EventPage = () => {
     };
     fetchData();
   }, []);
-  console.log(data)
 
   return (
     <div>
