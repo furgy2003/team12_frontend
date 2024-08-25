@@ -124,6 +124,7 @@ export default function Register() {
     //   const response = await fetch(
     //     "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/register",
     //     {
+    //       mode: 'no-cors',
     //       method: "POST",
     //       headers: {
     //         "Content-Type": "application/json",

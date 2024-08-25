@@ -37,6 +37,7 @@ export default function Login() {
       const response = await fetch(
         "https://sleepy-woodland-35400-5cdfb9a5b9a7.herokuapp.com/api/users/sign-in",
         {
+          mode: "no-cors",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
