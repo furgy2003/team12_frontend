@@ -3,10 +3,10 @@ import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import React, { useState } from 'react';
 
-export const FAQChatbot = ({setOpen}) => {
-  const [messages, setMessages] = useState([{text: 'Hi, how may I help you?', isUser: false}]);
+export const FAQChatbot = ({ setOpen }) => {
+  const [messages, setMessages] = useState([{ text: 'Hi, how may I help you?', isUser: false }]);
   const [userInput, setUserInput] = useState('');
-    console.log(messages)
+  console.log(messages)
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
@@ -25,20 +25,20 @@ export const FAQChatbot = ({setOpen}) => {
     }
   };
 
-  const processUserQuery = (query) => {
+  const processUserQuery = async (query) => {
     // Implement logic to match user query to relevant FAQ response
-    const response = getFAQResponse(query);
+    const response = await getFAQResponse(query);
     const newMessage = { text: response, isUser: false };
     setMessages((messages) => [...messages, newMessage]);
   };
 
-  const getFAQResponse = (query) => {
+  const getFAQResponse = async (query) => {
     const lowercaseQuery = query.toLowerCase();
-  
+
     switch (true) {
-      case lowercaseQuery.includes('what is the return policy?'):
+      case lowercaseQuery.includes('return policy?'):
         return 'Our return policy is 30 days from the date of purchase. You can return any unused items for a full refund.';
-      case lowercaseQuery.includes('where is your office?'):
+      case lowercaseQuery.includes('where is your office?') || lowercaseQuery.includes('location'):
         return 'from austin station to zubin\'s family centre';
       case lowercaseQuery.includes('where is zubin foundation\'s office'):
         return 'from kwai fong mtr to the zubin foundation office (high fashion centre)';
@@ -56,8 +56,35 @@ export const FAQChatbot = ({setOpen}) => {
         return 'To view more about our scholarship program, please visit our website at https://www.zubinfoundation.org/our-work/scholarships/';
       case lowercaseQuery.includes('capacity building'):
         return 'Our Online Training Academy is a platform providing free training for ethnic minority youth. The modules help hone specific work-related skills for those in university or in the early stages of building their career.\n\nTo join the Online Training Academy to receive free training, WhatsApp +852-9133-4700 or email oppbank@zubinfoundation.org';
+      case lowercaseQuery.includes('volunteer opportunities'):
+        return 'We welcome volunteers to help with various projects and events. Please visit our website or contact us at volunteer@zubinfoundation.org for more information.';
+      case lowercaseQuery.includes('donation'):
+        return 'You can make a donation to support our work through our website at https://www.zubinfoundation.org/donate/. Thank you for your generosity!';
+      case lowercaseQuery.includes('events'):
+        return 'For information about our upcoming events, please visit our events page at https://www.zubinfoundation.org/events/.';
+      case lowercaseQuery.includes('partnerships'):
+        return 'We are always looking to partner with like-minded organizations. Please contact us at partnerships@zubinfoundation.org to discuss potential collaborations.';
+      case lowercaseQuery.includes('annual report'):
+        return 'Our annual reports are available on our website at https://www.zubinfoundation.org/annual-reports/.';
+      case lowercaseQuery.includes('media inquiries'):
+        return 'For media inquiries, please contact our communications team at media@zubinfoundation.org.';
       default:
-        return 'I\'m sorry, I don\'t have an answer for that question. Please try rephrasing your question or check our FAQ page.';
+        // return 'I\'m sorry, I don\'t have an answer for that question. Please try rephrasing your question or check our FAQ page.';
+        const backendResponse = await fetch('/api/chatbot', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ "query": query })
+        });
+
+        if (backendResponse.ok) {
+          const data = await backendResponse.json(); // Parse the response to JSON
+          return data.response;
+        } else {
+          return 'I\'m sorry, I don\'t have an answer for that question. Please try rephrasing your question or check our FAQ page.';
+        }
+
     }
   };
   return (
@@ -66,7 +93,7 @@ export const FAQChatbot = ({setOpen}) => {
         <h1>FAQ Chatbot</h1>
         <IconButton
           aria-label="close"
-          onClick={()=>setOpen(false)}
+          onClick={() => setOpen(false)}
           sx={{
             position: 'absolute',
             right: 10,
@@ -74,7 +101,7 @@ export const FAQChatbot = ({setOpen}) => {
             color: (theme) => theme.palette.grey[500],
           }}
         >
-          <CloseIcon color='primary'/>
+          <CloseIcon color='primary' />
         </IconButton>
       </div>
       <div className="chat-messages">
