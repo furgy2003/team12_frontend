@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Step1 from "./EventStep1";
 import Step2 from "./EventStep2";
 import Step3 from "./EventStep3";
+import { isAbsoluteUrl } from "next/dist/shared/lib/utils";
 
 export default function CreateEvent() {
   const [step, setStep] = useState(1);
@@ -91,8 +92,8 @@ export default function CreateEvent() {
       : [];
 
     const jsonData = {
-      createState: "Finished",
       isPublished: formData.isPublished || false,
+      isAppointment: false,
       isDeleted: false,
       created_by: "a1",
       event_details: {
@@ -126,6 +127,7 @@ export default function CreateEvent() {
       },
     };
 
+<<<<<<< Updated upstream
     const handleSubmit = async () => {
       try {
         const response = await fetch('/api/events/create', {
@@ -147,6 +149,35 @@ export default function CreateEvent() {
 
     // Todo: show success/fail message in frontend
     // console.log("Form Submitted:", jsonData);
+=======
+    console.log("Form Submitted:", jsonData);
+    // Implement submission logic here to localhost or backend
+    // Submit the form data to the backend
+    fetch("http://localhost:8080/events/create", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST",
+      },
+      body: JSON.stringify(jsonData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Success:", data);
+        // Handle success, like showing a message or redirecting
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle error, like showing an error message to the user
+      });
+>>>>>>> Stashed changes
   };
 
   switch (step) {
