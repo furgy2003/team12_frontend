@@ -1,6 +1,7 @@
 [
     {
-        "event_id": "e1",
+        "id": "e1",
+        "isAppointment": false,
         "createState": "Finished",
         "isPublished": false,
         "isDeleted": false,
@@ -18,8 +19,8 @@
             "published_time": "09:00",
             "location": "Causeway Bay, Hong Kong",
             "description": "A conference for tech leaders to discuss the future of technology.",
-            "target_audience": ["Male", "Pakistan"],
-            "event_tags": ["Technology", "Innovation", "Networking"]
+            "target_audience": "",
+            "event_tags": ""
         },
         "training": {
             "sections": [

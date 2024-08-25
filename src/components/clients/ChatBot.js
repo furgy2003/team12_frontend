@@ -37,12 +37,24 @@ export const FAQChatbot = ({setOpen}) => {
     switch (query.toLowerCase()) {
       case 'what is the return policy?':
         return 'Our return policy is 30 days from the date of purchase. You can return any unused items for a full refund.';
-      case 'how long does shipping take?':
-        return 'Standard shipping takes 5-7 business days. We also offer expedited shipping options for an additional fee.';
-      case 'do you offer any discounts?':
-        return 'Yes, we offer a 10% discount for first-time customers and a 5% discount for returning customers.';
+      
+      case 'where is your office?':
+        return 'from austin station to zubin\'s family centre';
+      
+      case 'where is zubin foundation\'s office':
+      return 'from kwai fong mtr to the zubin foundation office (high fashion centre)';
+      
+      case 'email':
+      return 'info@zubinfoundation.org';
+
+      case 'how are you funded?':
+      return 'initially the zubin foundation was funded entirely by the founders. now we are largely funded on a project basis by foundations and individual donors. we are also delighted that many children and their parents are choosing to donate to the zubin foundation on their birthday and on other special occasions through www.twopresents.com';
+
+      case 'contact info':
+      return '+852 2540 9588 or email us on info@zubinfoundation.org';
+  
       default:
-        return 'Im sorry, I don\'t have an answer for that question. Please try rephrasing your question or check our FAQ page.';
+      return 'Im sorry, I don\'t have an answer for that question. Please try rephrasing your question or check our FAQ page.';
     }
   };
 

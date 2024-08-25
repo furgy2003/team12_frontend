@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Step1 from "./EventStep1";
 import Step2 from "./EventStep2";
 import Step3 from "./EventStep3";
+import { isAbsoluteUrl } from "next/dist/shared/lib/utils";
 
 export default function CreateEvent() {
   const [step, setStep] = useState(1);
@@ -91,8 +92,8 @@ export default function CreateEvent() {
       : [];
 
     const jsonData = {
-      createState: "Finished",
       isPublished: formData.isPublished || false,
+      isAppointment: false,
       isDeleted: false,
       created_by: "a1",
       event_details: {
@@ -126,8 +127,27 @@ export default function CreateEvent() {
       },
     };
 
-    console.log("Form Submitted:", jsonData);
-    // Implement submission logic here, e.g., API call to save the data
+    const handleSubmit = async () => {
+      try {
+        const response = await fetch("/api/events/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jsonData),
+        });
+        const data = await response.json();
+        console.log("Response from server:", data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    // Example call to handleSubmit
+    handleSubmit();
+
+    // Todo: show success/fail message in frontend
+    // console.log("Form Submitted:", jsonData);
   };
 
   switch (step) {

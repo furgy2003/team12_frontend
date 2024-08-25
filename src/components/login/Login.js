@@ -97,7 +97,7 @@ export default function Login() {
       <div className="flex justify-center mt-8">
         <div>No account yet?</div>
         <Link href="/register" className="text-secondary font-bold ml-4">
-          Regiter now
+          Register now
         </Link>
       </div>
     </Fragment>
