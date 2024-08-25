@@ -33,31 +33,33 @@ export const FAQChatbot = ({setOpen}) => {
   };
 
   const getFAQResponse = (query) => {
-    // Implement logic to map user queries to FAQ responses
-    switch (query.toLowerCase()) {
-      case 'what is the return policy?':
-        return 'Our return policy is 30 days from the date of purchase. You can return any unused items for a full refund.';
-      
-      case 'where is your office?':
-        return 'from austin station to zubin\'s family centre';
-      
-      case 'where is zubin foundation\'s office':
-      return 'from kwai fong mtr to the zubin foundation office (high fashion centre)';
-      
-      case 'email':
-      return 'info@zubinfoundation.org';
-
-      case 'how are you funded?':
-      return 'initially the zubin foundation was funded entirely by the founders. now we are largely funded on a project basis by foundations and individual donors. we are also delighted that many children and their parents are choosing to donate to the zubin foundation on their birthday and on other special occasions through www.twopresents.com';
-
-      case 'contact info':
-      return '+852 2540 9588 or email us on info@zubinfoundation.org';
+    const lowercaseQuery = query.toLowerCase();
   
+    switch (true) {
+      case lowercaseQuery.includes('what is the return policy?'):
+        return 'Our return policy is 30 days from the date of purchase. You can return any unused items for a full refund.';
+      case lowercaseQuery.includes('where is your office?'):
+        return 'from austin station to zubin\'s family centre';
+      case lowercaseQuery.includes('where is zubin foundation\'s office'):
+        return 'from kwai fong mtr to the zubin foundation office (high fashion centre)';
+      case lowercaseQuery.includes('email'):
+        return 'info@zubinfoundation.org';
+      case lowercaseQuery.includes('how are you funded?'):
+        return 'initially the zubin foundation was funded entirely by the founders. now we are largely funded on a project basis by foundations and individual donors. we are also delighted that many children and their parents are choosing to donate to the zubin foundation on their birthday and on other special occasions through www.twopresents.com';
+      case lowercaseQuery.includes('contact info') || lowercaseQuery.includes('phone'):
+        return '+852 2540 9588 or email us on info@zubinfoundation.org';
+      case lowercaseQuery.includes('forced marriage'):
+        return 'If you are in need of help in forced marriage cases please contact us.\n\nEmail: info@zubinfoundation.org\n\nGeneral line: +852 2540-9588\n\nCall Mira (Helpline): +852 9682-3100';
+      case lowercaseQuery.includes('crisis'):
+        return 'Call Mira: Helpline for Women and Girls in Crisis\n\nStarted in May-June 2018, Call Mira is a first-of-its-kind helpline providing support to ethnic minority women and girls in Hong Kong in English, Urdu, and Hindi. More importantly, all information shared with Call Mira is kept in confidence.\n\nThe helpline operates Monday to Friday from 10:00 a.m. to 6:00 p.m. and on Saturday from 9:00 a.m. to 1:00 p.m.\n\n+852 2540-9588';
+      case lowercaseQuery.includes('scholarship'):
+        return 'To view more about our scholarship program, please visit our website at https://www.zubinfoundation.org/our-work/scholarships/';
+      case lowercaseQuery.includes('capacity building'):
+        return 'Our Online Training Academy is a platform providing free training for ethnic minority youth. The modules help hone specific work-related skills for those in university or in the early stages of building their career.\n\nTo join the Online Training Academy to receive free training, WhatsApp +852-9133-4700 or email oppbank@zubinfoundation.org';
       default:
-      return 'Im sorry, I don\'t have an answer for that question. Please try rephrasing your question or check our FAQ page.';
+        return 'I\'m sorry, I don\'t have an answer for that question. Please try rephrasing your question or check our FAQ page.';
     }
   };
-
   return (
     <div className="chat-container">
       <div className="chat-header">
