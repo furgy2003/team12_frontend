@@ -1,7 +1,7 @@
 import { Divider } from "@mui/material";
 import EventPreviewDescription from "../ui/EventPreviewDescription";
-import Description from "../ui/Description";
 import { useRouter } from "next/router";
+import Description from "../ui/Description";
 
 export default function TrainPreview(props) {
   const { title, date, time, location, description, id, img } = props;

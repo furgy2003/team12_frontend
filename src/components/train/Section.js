@@ -1,4 +1,4 @@
-import Description from "@/components/ui/Description";
+import Description from "../ui/Description";
 
 export default function Section(props) {
   const { sectionVideo, sectionTitle, sectionDescription } = props;
