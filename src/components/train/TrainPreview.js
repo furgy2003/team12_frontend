@@ -11,7 +11,6 @@ export default function TrainPreview(props) {
     console.log(id);
     router.push(currentPath + "/" + id);
   };
-
   return (
     <div>
       <div className="flex flex-col p-20 pr-36 pl-36">
