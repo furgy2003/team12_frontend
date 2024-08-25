@@ -25,7 +25,7 @@ export default function Register() {
     philippine: false,
     malaysian: false,
     pakistan: false,
-    srilakarn: false,
+    srilankan: false,
     hongkong: false,
     others: false,
   });
@@ -37,7 +37,7 @@ export default function Register() {
     philippine,
     malaysian,
     pakistan,
-    srilakarn,
+    srilankan,
     hongkong,
     others,
   } = ethnicity;
@@ -225,7 +225,7 @@ export default function Register() {
                       onChange={handleEthnicity}
                     />
                   }
-                  label="Pakistan"
+                  label="Pakistani"
                 />
               </FormGroup>
               <FormGroup>
@@ -238,18 +238,18 @@ export default function Register() {
                       onChange={handleEthnicity}
                     />
                   }
-                  label="Philippine"
+                  label="Filipino"
                 />
                 <FormControlLabel
                   control={
                     <Checkbox
                       color="secondary"
-                      checked={srilakarn}
-                      name="srilakarn"
+                      checked={srilankan}
+                      name="srilankan"
                       onChange={handleEthnicity}
                     />
                   }
-                  label="Sri Lakarn"
+                  label="Sri Lankan"
                 />
               </FormGroup>
               <FormGroup>

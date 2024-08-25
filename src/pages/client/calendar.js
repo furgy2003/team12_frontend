@@ -1,3 +1,8 @@
+import { EventCalendar } from "@/components/events/user/EventCalendar";
+
 export default function Calendar() {
-  return <div>Calendar</div>;
+  return (
+
+    <EventCalendar />
+  );
 }
