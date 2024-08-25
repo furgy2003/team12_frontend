@@ -1,15 +1,15 @@
 import AdminLayout from "../layout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, Container } from "@mui/material";
 import CreateEvent from "../../../components/admin/ManageEvents/CreateEvent";
 import { MdAdd } from "react-icons/md";
 import FilterButtons from "@/components/ui/FilterButtons";
 import EventCard from "@/components/admin/ManageEvents/EventCard";
-import mockData from "./mockData.json";
 
 export default function ManageEvents() {
   const [open, setOpen] = useState(false);
-  const [events] = useState(mockData);
+  const [events, setEvents] = useState([]);
+  const [eventCreated, setEventCreated] = useState(false); // State to track new event creation
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,7 +17,29 @@ export default function ManageEvents() {
 
   const handleClose = () => {
     setOpen(false);
+    setEventCreated(false); // Reset event created state
   };
+
+  const handleEventCreated = () => {
+    setEventCreated(true); // Set the state to true when a new event is created
+    handleClose(); // Close the dialog after setting the state
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/api/events/get-all"
+        );
+        const data = await response.json();
+        setEvents(data.slice(0, 5)); // Limiting to 5 for testing purposes
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [eventCreated]); // Re-fetch data whenever a new event is created
 
   return (
     <AdminLayout>
@@ -43,7 +65,7 @@ export default function ManageEvents() {
 
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
         <DialogContent>
-          <CreateEvent />
+          <CreateEvent onClose={handleEventCreated} /> {/* Pass the callback */}
         </DialogContent>
       </Dialog>
     </AdminLayout>

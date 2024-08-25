@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Step1 from "./EventStep1";
 import Step2 from "./EventStep2";
 import Step3 from "./EventStep3";
-import { isAbsoluteUrl } from "next/dist/shared/lib/utils";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function CreateEvent() {
+export default function CreateEvent({ onClose }) {
   const [step, setStep] = useState(1);
   const [error, setError] = useState(""); // Error state
 
@@ -77,7 +78,7 @@ export default function CreateEvent() {
     return true;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateFields()) {
       setError("Please fill in all required fields."); // Set error message
       return;
@@ -96,6 +97,7 @@ export default function CreateEvent() {
       isAppointment: false,
       isDeleted: false,
       created_by: "a1",
+      createState: "published",
       event_details: {
         event_name: formData.eventName,
         image_url: formData.uploadImage, // Now can be a URL or a file
@@ -127,41 +129,45 @@ export default function CreateEvent() {
       },
     };
 
-    const handleSubmit = async () => {
-      try {
-        const response = await fetch("/api/events/create", {
+    try {
+      const response = await fetch(
+        "https://team12-backend-code-to-give-ca637a425bb3.herokuapp.com/api/events/create",
+        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(jsonData),
+        }
+      );
+      const data = await response.json();
+      console.log("Response from server:", data);
+
+      if (response.ok) {
+        toast.success("Event created successfully!", {
+          onClose: onClose, // Close the dialog only when the toast is closed
         });
-        const data = await response.json();
-        console.log("Response from server:", data);
-      } catch (error) {
-        console.error("Error:", error);
+      } else {
+        toast.error(`Failed to create event: ${data.description}`);
       }
-    };
-
-    // Example call to handleSubmit
-    handleSubmit();
-
-    // Todo: show success/fail message in frontend
-    // console.log("Form Submitted:", jsonData);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred. Please try again.");
+    }
   };
 
-  switch (step) {
-    case 1:
-      return (
+  return (
+    <>
+      <ToastContainer position="top-right" autoClose={500} />
+      {step === 1 && (
         <Step1
           nextStep={nextStep}
           handleChange={handleChange}
           formData={formData}
           error={error} // Pass error state
         />
-      );
-    case 2:
-      return (
+      )}
+      {step === 2 && (
         <Step2
           nextStep={nextStep}
           previousStep={previousStep}
@@ -170,17 +176,15 @@ export default function CreateEvent() {
           addSection={addSection}
           removeSection={removeSection}
         />
-      );
-    case 3:
-      return (
+      )}
+      {step === 3 && (
         <Step3
           previousStep={previousStep}
           handleChange={handleChange}
           formData={formData}
           handleSubmit={handleSubmit}
         />
-      );
-    default:
-      return null;
-  }
+      )}
+    </>
+  );
 }
