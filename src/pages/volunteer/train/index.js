@@ -5,7 +5,7 @@ import { Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function TrainHomePage() {
-  // TO DO: CALL DB TO FETCH EVENTS
+  // CALL DB TO FETCH EVENTS
   const [events, setEvents] = useState([]);
   const [trainEvents, setTrainEvents] = useState([]);
 
