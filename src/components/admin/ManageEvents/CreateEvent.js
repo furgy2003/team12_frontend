@@ -127,20 +127,19 @@ export default function CreateEvent() {
       },
     };
 
-<<<<<<< Updated upstream
     const handleSubmit = async () => {
       try {
-        const response = await fetch('/api/events/create', {
-          method: 'POST',
+        const response = await fetch("/api/events/create", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(jsonData),
         });
         const data = await response.json();
-        console.log('Response from server:', data);
+        console.log("Response from server:", data);
       } catch (error) {
-        console.error('Error:', error);
+        console.error("Error:", error);
       }
     };
 
@@ -149,35 +148,6 @@ export default function CreateEvent() {
 
     // Todo: show success/fail message in frontend
     // console.log("Form Submitted:", jsonData);
-=======
-    console.log("Form Submitted:", jsonData);
-    // Implement submission logic here to localhost or backend
-    // Submit the form data to the backend
-    fetch("http://localhost:8080/events/create", {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST",
-      },
-      body: JSON.stringify(jsonData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Success:", data);
-        // Handle success, like showing a message or redirecting
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle error, like showing an error message to the user
-      });
->>>>>>> Stashed changes
   };
 
   switch (step) {
