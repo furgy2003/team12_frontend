@@ -8,6 +8,7 @@ const UpcomingEvents = () => {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
+  
 
   useEffect(() => {
     const fetchData = async () => {
