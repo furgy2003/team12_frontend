@@ -4,21 +4,19 @@ import Description from "../ui/Description";
 import { useRouter } from "next/router";
 
 export default function TrainPreview(props) {
-  const { title, date, time, location, description, eventID } = props;
+  const { title, date, time, location, description, id, img } = props;
   const router = useRouter();
   const handleTrain = () => {
     const currentPath = router.pathname;
-    router.push(currentPath + "/" + eventID);
+    console.log(id);
+    router.push(currentPath + "/" + id);
   };
 
   return (
     <div>
       <div className="flex flex-col p-20 pr-36 pl-36">
         <div className="flex flex-col lg:flex-row justify-between items-center">
-          <img
-            src="/images/kayaking.jpg"
-            className="object-cover w-96 h-80 rounded-lg m-4"
-          />
+          <img src={img} className="object-cover w-96 h-80 rounded-lg m-4" />
           <div className="flex flex-col justify-center">
             <EventPreviewDescription
               title={title}
